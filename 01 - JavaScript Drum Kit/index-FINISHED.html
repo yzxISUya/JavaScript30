@@ -60,7 +60,8 @@
 
 <script>
   function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
+    if (e.propertyName !== 'transform') return; //propertyName是transitionend事件对象的一个属性，表示哪个CSS属性完成了过渡
+    //这里很妙，如果不是transform属性完成了过渡，就直接返回，不执行后面的代码，因为transform过渡的时间最长，其他属性的过渡时间更短，如果不加这个判断，就会在transform过渡完成之前就把playing类移除掉了
     e.target.classList.remove('playing');
   }
 
@@ -74,6 +75,7 @@
     audio.play();
   }
 
+  //这个keys和上面HTML中的.keys是不同的，前者是一个数组，后者是个选择器
   const keys = Array.from(document.querySelectorAll('.key'));
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
   window.addEventListener('keydown', playSound);

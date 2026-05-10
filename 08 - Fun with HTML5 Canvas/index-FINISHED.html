@@ -15,7 +15,7 @@ canvas.height = window.innerHeight;
 ctx.strokeStyle = '#BADA55';
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 100;
+ctx.lineWidth = 11;
 // ctx.globalCompositeOperation = 'multiply';
 
 let isDrawing = false;
@@ -27,7 +27,7 @@ let direction = true;
 function draw(e) {
   if (!isDrawing) return; // stop the fn from running when they are not moused down
   console.log(e);
-  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+  ctx.strokeStyle = `hsl(${hue}, 60%, 60%)`;
   ctx.beginPath();
   // start from
   ctx.moveTo(lastX, lastY);
@@ -40,14 +40,14 @@ function draw(e) {
   if (hue >= 360) {
     hue = 0;
   }
-  if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+  if (ctx.lineWidth >= 150 || ctx.lineWidth <= 10) {
     direction = !direction;
   }
 
   if(direction) {
-    ctx.lineWidth++;
+    ctx.lineWidth+=0.5;
   } else {
-    ctx.lineWidth--;
+    ctx.lineWidth-=0.5;
   }
 
 }

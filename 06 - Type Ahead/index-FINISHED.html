@@ -26,13 +26,13 @@ fetch(endpoint)
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
     // here we need to figure out if the city or state matches what was searched
-    const regex = new RegExp(wordToMatch, 'gi');
-    return place.city.match(regex) || place.state.match(regex)
+    const regex = new RegExp(wordToMatch, 'gi'); //g是全局搜索，i是忽略大小写，这一步创建了一个正则表达式（RegExp是一个内置类，new来创建类对象，创建数组是不写new其实只是一个语法糖，实际上也是调用了new）
+    return place.city.match(regex) || place.state.match(regex)//是否匹配正则表达式
   });
 }
 
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');//加千分位逗号，逆天正则表达式，吃屎去吧
 }
 
 function displayMatches() {
@@ -48,7 +48,7 @@ function displayMatches() {
       </li>
     `;
   }).join('');
-  suggestions.innerHTML = html;
+  suggestions.innerHTML = html;//直接替换元素内部的HTML，所以追加可以这么写：XXX.innerHTML += '<p>新增内容</p>';
 }
 
 const searchInput = document.querySelector('.search');

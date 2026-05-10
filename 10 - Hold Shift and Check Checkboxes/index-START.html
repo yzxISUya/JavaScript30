@@ -17,21 +17,21 @@
       max-width: 400px;
       margin: 50px auto;
       background: white;
-      border-radius: 5px;
-      box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 10px 10px 0 rgba(0,0,0,0.2);
     }
 
     .item {
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #F1F1F1;
+      border-bottom: 2px solid #f0f0f0;
     }
 
     .item:last-child {
       border-bottom: 0;
     }
 
-    input:checked + p {
+    input:checked + p { /*checked是一个伪类，语法：“元素+状态”， “+”是相邻兄弟选择器， 补充：“>”是子元素选择器*/
       background: #F9F9F9;
       text-decoration: line-through;
     }
@@ -48,7 +48,7 @@
       font-family:'helvetica neue';
       font-size: 20px;
       font-weight: 200;
-      border-left: 1px solid #D1E2FF;
+      border-left: 1px solid #d4d8de;
     }
   </style>
    <!--
@@ -97,6 +97,25 @@
   </div>
 
 <script>
+//我说实话我这个写得比他好吧，可读性高多了，效率也高多了，他那个纯高级感，装b用的，不过状态变量确实可以学学
+const checkboxes = Array.from(document.querySelectorAll('.inbox input[type = "checkbox"]'));
+
+let lastChecked;
+
+function handleCheck(e){
+  if(lastChecked && e.shiftKey && this.checked){//.checked是checkbox的特有属性，表示“是否被勾选”
+    for(let i = checkboxes.indexOf(lastChecked);i < checkboxes.indexOf(this);i++){
+      checkboxes[i].checked = true;
+    }
+    for(let i = checkboxes.indexOf(lastChecked);i > checkboxes.indexOf(this);i--){
+      checkboxes[i].checked = true;
+    }
+  }
+
+  lastChecked = this;
+}
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
 </script>
 </body>
 </html>
