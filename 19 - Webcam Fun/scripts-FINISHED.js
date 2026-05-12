@@ -37,10 +37,10 @@ function paintToCanvas() {
     // mess with them
     // pixels = redEffect(pixels);
 
-    pixels = rgbSplit(pixels);
+    // pixels = rgbSplit(pixels);
     // ctx.globalAlpha = 0.8;
 
-    // pixels = greenScreen(pixels);
+    pixels = greenScreen(pixels);
     // put them back
     ctx.putImageData(pixels, 0, 0);
   }, 16);
@@ -62,7 +62,7 @@ function takePhoto() {
 
 function redEffect(pixels) {
   for (let i = 0; i < pixels.data.length; i+=4) {
-    pixels.data[i + 0] = pixels.data[i + 0] + 200; // RED
+    pixels.data[i + 0] = pixels.data[i + 0] + 200; // RED 不怕越界，越界自动卡停，>255的都会变为255，小于0的都为被强制变为0
     pixels.data[i + 1] = pixels.data[i + 1] - 50; // GREEN
     pixels.data[i + 2] = pixels.data[i + 2] * 0.5; // Blue
   }

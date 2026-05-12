@@ -44,17 +44,30 @@
   </div>
 
   <script>
+    //这个防抖还是有点妙哦，看了半天才看懂
     function debounce(func, wait = 20, immediate = true) {
-      var timeout;
+      var timeout; //timeout是定时器id
+      /*
+      JS引擎内部必须知道：
+      “到底是哪一个定时器”
+
+      因为你可能同时有：
+
+      setTimeout(...)
+      setTimeout(...)
+      setTimeout(...)
+
+      很多个定时器。
+      */
       return function() {
-        var context = this, args = arguments;
+        var context = this, args = arguments; //arguments就是所有参数的意思
         var later = function() {
           timeout = null;
           if (!immediate) func.apply(context, args);
         };
         var callNow = immediate && !timeout;
         clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
+        timeout = setTimeout(later, wait); //wait毫秒后执行 later
         if (callNow) func.apply(context, args);
       };
     };
@@ -142,3 +155,5 @@
 
 </body>
 </html>
+
+

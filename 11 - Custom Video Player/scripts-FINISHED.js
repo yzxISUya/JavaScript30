@@ -4,13 +4,13 @@ const video = player.querySelector('.viewer');
 const progress = player.querySelector('.progress');
 const progressBar = player.querySelector('.progress__filled');
 const toggle = player.querySelector('.toggle');
-const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
+const skipButtons = player.querySelectorAll('[data-skip]');
 
 /* Build out functions */
 function togglePlay() {
   const method = video.paused ? 'play' : 'pause';
-  video[method]();
+  video[method](); //中括号语法，效果和点语法相同，优点是属性名可动态；为什么能这么写：因为在js中：对象的属性名本质上都是字符串
 }
 
 function updateButton() {
@@ -20,7 +20,7 @@ function updateButton() {
 }
 
 function skip() {
- video.currentTime += parseFloat(this.dataset.skip);
+  video.currentTime += parseFloat(this.dataset.skip);
 }
 
 function handleRangeUpdate() {
@@ -39,13 +39,12 @@ function scrub(e) {
 
 /* Hook up the event listeners */
 video.addEventListener('click', togglePlay);
-video.addEventListener('play', updateButton);
+video.addEventListener('play', updateButton);//暂停 -> 播放时触发，而非一直触发
 video.addEventListener('pause', updateButton);
-video.addEventListener('timeupdate', handleProgress);
+video.addEventListener('timeupdate', handleProgress);//播放时一直触发
 
 toggle.addEventListener('click', togglePlay);
 skipButtons.forEach(button => button.addEventListener('click', skip));
-ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 
 let mousedown = false;

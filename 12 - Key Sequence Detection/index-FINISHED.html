@@ -14,11 +14,11 @@
       window.addEventListener("keyup", (e) => {
         console.log(e.key);
         pressed.push(e.key);
-        pressed.splice(
-          -secretCode.length - 1,
+        pressed.splice( //array.splice(start, deleteCount, item1, item2, ...)，返回值：返回“被删除的元素”组成的新数组
+          0,
           pressed.length - secretCode.length
         );
-        if (pressed.join("").includes(secretCode)) {
+        if (pressed.join("").includes(secretCode)) { //.join("")使数组变成字符串
           console.log("DING DING!");
           cornify_add();
         }
