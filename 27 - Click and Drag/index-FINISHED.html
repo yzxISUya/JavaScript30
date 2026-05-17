@@ -62,8 +62,9 @@
     if (!isDown) return;  // stop the fn from running
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 3;
+    const walk = x - startX;
     slider.scrollLeft = scrollLeft - walk;
+    console.log(e.pageX, slider.offsetLeft, startX, scrollLeft, slider.scrollLeft);
   });
 
 </script>

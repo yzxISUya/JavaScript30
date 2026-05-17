@@ -47,11 +47,11 @@
   <script>
     // Not a ton of code, but hard to
     const nav = document.querySelector('#main');
-    let topOfNav = nav.offsetTop;
+    let topOfNav = nav.offsetTop; //offsetTop：元素顶部距离“父定位元素顶部”的垂直距离（单位：像素）
 
     function fixNav() {
       if (window.scrollY >= topOfNav) {
-        document.body.style.paddingTop = nav.offsetHeight + 'px';
+        document.body.style.paddingTop = nav.offsetHeight + 'px'; //offsetHeight:元素“占据的总高度”，此处通过加顶部内边距来抵消fix导致的重排错位
         document.body.classList.add('fixed-nav');
       } else {
         document.body.classList.remove('fixed-nav');

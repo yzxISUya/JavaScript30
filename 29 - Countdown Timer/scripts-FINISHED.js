@@ -3,6 +3,14 @@ const timerDisplay = document.querySelector('.display__time-left');
 const endTime = document.querySelector('.display__end-time');
 const buttons = document.querySelectorAll('[data-time]');
 
+/*
+知识点补充：
+setInterval → 定时重复执行 （setInterval(函数, 时间间隔)）
+clearInterval → 停止重复执行 （因为 setInterval() 会返回一个“定时器 ID”，所以可以clearInterval(定时器ID)）
+parseInt → 把字符串转成整数
+*/
+
+
 function timer(seconds) {
   // clear any existing timers
   clearInterval(countdown);

@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://fav.farm/✅" />
 </head>
+
+<!--
+CSS样式表中高光中的这句可太重要了：
+position: absolute;
+-->
+
 <body>
 
     <nav>
@@ -27,13 +33,13 @@
     </div>
 
 <script>
-  const triggers = document.querySelectorAll('a');
+  const triggers = document.querySelectorAll('a'); //触发器
   const highlight = document.createElement('span');
   highlight.classList.add('highlight');
   document.body.appendChild(highlight);
 
   function highlightLink() {
-    const linkCoords = this.getBoundingClientRect();
+    const linkCoords = this.getBoundingClientRect(); //getBoundingClientRect() 返回一个对象，包含元素的 位置和尺寸
     console.log(linkCoords);
     const coords = {
       width: linkCoords.width,
@@ -45,7 +51,7 @@
     highlight.style.width = `${coords.width}px`;
     highlight.style.height = `${coords.height}px`;
     highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
-
+    // translate(x, y)表示最终坐标应该在x，y，然后朝那个位置运动，而非开始运动x，y的距离
   }
 
   triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));

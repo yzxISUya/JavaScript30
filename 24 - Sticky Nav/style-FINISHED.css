@@ -15,17 +15,17 @@ body {
 }
 
 .site-wrap {
-  max-width: 700px;
+  max-width: 1000px;
   margin: 70px auto;
   background: white;
   padding: 40px;
   text-align: justify;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
-  transform: scale(0.98);
-  transition: transform 0.5s;
+  transform: scale(0.96);
+  transition: transform 0.4s;
 }
 
-body.fixed-nav .site-wrap {
+body.fixed-nav .site-wrap { /*这是一个 CSS 组合选择器，意思是：当<body> 上有 fixed-nav 这个类时，选中 .site-wrap 元素。*/
   transform: scale(1);
 }
 

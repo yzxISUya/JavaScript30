@@ -46,7 +46,7 @@
   }
 
   function randomHole(holes) {
-    const idx = Math.floor(Math.random() * holes.length);
+    const idx = Math.floor(Math.random() * holes.length); //Math.random() 的作用是：返回一个随机小数（>= 0 且 < 1）
     const hole = holes[idx];
     if (hole === lastHole) {
       console.log('Ah nah thats the same one bud');
@@ -75,7 +75,7 @@
   }
 
   function bonk(e) {
-    if(!e.isTrusted) return; // cheater!
+    if(!e.isTrusted) return; // 防作弊？！isTrusted表示由真实用户触发而非代码触发（如.click()）
     score++;
     this.parentNode.classList.remove('up');
     scoreBoard.textContent = score;

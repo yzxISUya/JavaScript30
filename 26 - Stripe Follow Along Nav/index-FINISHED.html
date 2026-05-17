@@ -234,10 +234,11 @@
     const dropdownCoords = dropdown.getBoundingClientRect();
     const navCoords = nav.getBoundingClientRect();
 
-    const coords = {
+    const coords = { //位置
       height: dropdownCoords.height,
       width: dropdownCoords.width,
-      top: dropdownCoords.top - navCoords.top,
+      //position: absolute 会相对于最近的已定位祖先元素
+      top: dropdownCoords.top - navCoords.top, //用相对nav的位置，因为css中.dropdownBackground：position: absolute;（即：它的默认起点是：nav 的左上角）
       left: dropdownCoords.left - navCoords.left
     };
 
