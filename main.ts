@@ -22,7 +22,7 @@ if (nav) {
     a.innerHTML = `
       ${folderName} 
       <span class="badge ${isStart ? 'start' : 'finished'}">
-        ${isStart ? '📝 START' : '🏁 FINISHED'}
+        ${isStart ? ' TS ' : ' JS '}
       </span>
     `;
     
